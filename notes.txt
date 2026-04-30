@@ -1,0 +1,63 @@
+REACT - DAY ONE NOTES
+=====================
+
+## What is React?
+- React builds SPA (Single Page Application)
+- SPA = one page loads once, content updates without reload
+- MPA = every click loads a new page from server
+- React uses Virtual DOM to update only what changed
+
+## Components
+- React apps are built from small reusable pieces called components
+- Each component is just a function that returns JSX
+- Component names must start with Capital letter
+
+Structure:
+App
+ └── Menu
+      └── Dish (x10)
+
+## Props
+- Props pass data from parent to child (one way only)
+- Parent passes:   <Menu items={meny} />
+- Child receives:  function Menu({ items })
+- Data flows DOWN only: App → Menu → Dish
+
+## .map()
+- Used to loop through arrays in React
+- Returns JSX for each item
+- Always add key prop when using map:
+  <Dish key={dish.id} dishes={dish} />
+
+## CSS Modules
+- File named: component.module.css
+- Styles are scoped to that component only
+- Import: import styles from "./dish.module.css"
+- Use:    className={styles.card}
+
+## File Structure
+src/
+├── components/
+│   ├── Dish.jsx
+│   ├── Dish.module.css
+│   ├── Menu.jsx
+│   └── Menu.module.css
+├── App.jsx
+└── main.jsx
+
+## Data Flow in This Project
+App.jsx
+ └── owns meny array (10 dishes)
+      └── passes whole array to Menu as "items"
+           └── Menu loops with .map()
+                └── passes ONE dish to each Dish
+                     └── Dish displays:
+                          - tittel
+                          - pris
+                          - ingredienser
+                          - kategori
+App → Menu        : passes the WHOLE array (10 dishes)
+Menu → Dish       : passes ONE dish at a time (each loop)
+items.map((dish) => (    // "dish" = one item from the array
+  <Dish dishes={dish} /> // passing that same one item to Dish
+))
