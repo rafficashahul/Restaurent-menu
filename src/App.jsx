@@ -1,4 +1,5 @@
 import Menu from "./components/menu.jsx";
+
 const meny = [
   {
     id: 1,
@@ -75,7 +76,9 @@ const meny = [
 function App() {
   return (
     <div>
-      <h1>Restaurantmenyen</h1>
+      <h1 className="animate__animated animate__fadeInDown">
+        Restaurantmenyen
+      </h1>
       <Menu items={meny} />
     </div>
   );
